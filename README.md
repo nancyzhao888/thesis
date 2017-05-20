@@ -5,6 +5,7 @@ Major Studio 2 Spring 2017
 
 ###### _40 theatres, 12 blocks, 1 city...... Does the life of a Broadway musical end here?_
 
+#### Project
 [![](https://github.com/nancyzhao888/thesis/blob/master/work/broadway/preview.png)](https://nancyzhao888.github.io/thesis/work/broadway/)
 
 #### Abstract
