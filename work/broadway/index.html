@@ -177,7 +177,7 @@ div.tooltip {
 		opacity: 1;
 }
 
-#overlay2 {
+/*#overlay2 {
   position: fixed;
   background: black;
   top: 0px;
@@ -187,24 +187,36 @@ div.tooltip {
     top: 50%;
     left: 50%;
     /*min-width: 100%;*/
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
+    /*max-height: 100%;*/
+    /*width: auto;*/
+    /*height: auto;*/
+    /*z-index: -100;*/
+    /*-ms-transform: translateX(-50%) translateY(-50%);*/
+    /*-moz-transform: translateX(-50%) translateY(-50%);*/
+    /*-webkit-transform: translateX(-50%) translateY(-50%);*/
     /*transform: translateX(-50%) translateY(-50%);
     /*background: url(preview.png) no-repeat;
     /*background-size: cover; */
+
+.about {
+    margin-top: 37px;
+    font-family: MouseDeco;
+    font-size: 18px;
+    margin-left:15px;
+    /*font-size: 9px;*/
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 2px 6px;
+    border: 1px solid #DEAD27;
+    border-radius: 2px;
+    color: #DEAD27;
 }
 
 .demo {
-    margin-top: 50px;
+    margin-top: 37px;
     font-family: MouseDeco;
     font-size: 18px;
-    color: white;
-    margin-left:10px;
+    margin-left:15px;
     /*font-size: 9px;*/
     letter-spacing: 1px;
     display: inline-block;
@@ -215,11 +227,10 @@ div.tooltip {
 }
 
 .enter {
-    margin-top: 50px;
+    margin-top: 37px;
     font-family: MouseDeco;
     font-size: 18px;
-    color: white;
-    margin-left:10px;
+    margin-left:15px;
     /*font-size: 9px;*/
     letter-spacing: 1px;
     display: inline-block;
@@ -227,6 +238,16 @@ div.tooltip {
     border: 1px solid #DEAD27;
     border-radius: 2px;
     color: #DEAD27;
+}
+
+.creator{
+  position: fixed; 
+  bottom: 0; 
+  width:100%; 
+  text-align: center;
+  font-family: Josefin;
+  font-size: 10px;
+  color: white;
 }
 .footer {
   position: fixed;
@@ -284,13 +305,10 @@ div.tooltip {
     <p></p>
     <p class="intro"> 40 theatres, 12 blocks, 1 city......</p>
     <p class="intro"> Does the life of a Broadway musical end here?</p>
+    <div class="about"><a href="https://nancyzhao888.github.io/thesis/work/broadway/video/Wicked.mp4">About</a></div>
     <div class="demo"><a href="https://nancyzhao888.github.io/thesis/work/broadway/video/presentation.mp4">Demo</a></div>
     <div class="enter">Explore</div>
-</div>
-<div id='overlay2' class='col-lg-12 col-md-12 col-xs-12'>
-    <video playsinline autoplay muted no repeat id="myVideo">
-      <source src="video/Wicked.mp4" type="video/mp4">
-    </video>
+    <p class="creator"> By NANCY ZHAO </p>
 </div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
@@ -336,7 +354,7 @@ var svg = d3.select("#visualization")
 var svgInfo = d3.select("#visualization")
     .append("svg")
     .attr("width", "20%")
-    .attr("height", window.innerHeight + 200)
+    .attr("height", window.innerHeight + 250)
     .style('display','none')
     //.style("margin-left", margin.left + "px")
     //.style("margin-right", margin.right + "px")
@@ -345,7 +363,7 @@ var svgInfo = d3.select("#visualization")
 var svgTime = d3.select("#visualization")
     .append("svg")
     .attr("width", "80%")
-    .attr("height",window.innerHeight + 200)
+    .attr("height",window.innerHeight + 250)
     .style('display','none')
     //.style("margin-left", margin.left + "px")
     //.style("margin-right", margin.right + "px")
@@ -365,11 +383,11 @@ var simulation = d3.forceSimulation()
     .force("charge", d3.forceManyBody())
     .force("center", d3.forceCenter(width/2, (newHeight-160)/2));
 
-d3.select("#myVideo").on("click", closeYou)
+// d3.select("#myVideo").on("click", closeYou)
     
-    function closeYou(){
-      d3.select('#overlay2').style("display", 'none');
-    }
+//     function closeYou(){
+//       d3.select('#overlay2').style("display", 'none');
+//     }
 function simulation_init(n,l,link,node){
         
 
@@ -734,7 +752,7 @@ var drawNodesLinks = function(error, _graph){
              div.transition()
                .duration(200)
                .style("opacity", .9);
-             div.html("DO the Tony Awards matter? Aside from prestige and a shiny trophy, does Tony Award help a musical title gain more overseas presence?")
+             div.html("Do the Tony Awards matter? Aside from prestige and a shiny trophy, does Tony Award help a musical title gain more overseas presence?")
                .style("left", (d3.event.pageX) + "px")
                .style("top", (d3.event.pageY - 28) + "px")
                .style("background", "#CBA9A2");
@@ -1065,7 +1083,21 @@ var drawNodesLinks = function(error, _graph){
     }
 
     d3.select('#Genre')
-      .on("click", clusterbyGenre);
+      .on("click", clusterbyGenre)
+      .on("mouseover", function(d) {
+             div.transition()
+               .duration(200)
+               .style("opacity", .9);
+             div.html("Musicals embody stories that range widely from love, to fairy tales, to autobiographies, to historical events. Four top type of musical titles are examined in this project.")
+               .style("left", (d3.event.pageX) + "px")
+               .style("top", (d3.event.pageY - 28) + "px")
+               .style("background", "#CBA9A2");
+          })
+         .on("mouseout", function(d) {
+             div.transition()
+               .duration(500)
+               .style("opacity", 0);
+          });
       
     function clusterbyGenre() {
         
